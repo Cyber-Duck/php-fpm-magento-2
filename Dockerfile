@@ -96,16 +96,6 @@ RUN echo "* * * * * /usr/bin/php /var/www/bin/magento setup:cron:run >> /var/www
 RUN echo "#~ MAGENTO END" >> /etc/cron.d/magento2-jobs
 RUN chmod 0644 /etc/cron.d/magento2-jobs
 
-#####################################
-# Set ownership and permissions:
-#####################################
-
-RUN cd /var/www && \
-    find var generated vendor pub/static pub/media app/etc -type f -exec chmod g+w {} \; && \
-    find var generated vendor pub/static pub/media app/etc -type d -exec chmod g+ws {} \; && \
-    sudo chown -R :www-data . && \
-    chmod u+x bin/magento
-
 #
 #--------------------------------------------------------------------------
 # Final Touch
