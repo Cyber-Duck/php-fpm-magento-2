@@ -28,6 +28,7 @@ Based on the **official Magento 2 requirements** [here](http://devdocs.magento.c
 * Iconv PHP Extension
 * PHP OPcache
 * Latest Composer
+* Cron (with Magento 2.2 Cron jobs setup, see [the official documentation](http://devdocs.magento.com/guides/v2.2/comp-mgr/prereq/prereq_cron.html))
 * PHP ini values for Magento 2 (see [`magento2.ini`](https://github.com/Cyber-Duck/php-fpm-laravel/blob/7.1/magento2.ini))
 * xDebug (PHPStorm friendly, see [`xdebug.ini`](https://github.com/Cyber-Duck/php-fpm-laravel/blob/7.1/xdebug.ini))
 * `magento` alias created to run unit tests `bin/magento` with `docker-compose exec [service_name] magento ...`
@@ -43,7 +44,7 @@ given Docker image.
 
 * [`7.1`](https://github.com/Cyber-Duck/php-fpm-magento2/tree/7.1)
 
-**Note:** the `master` branch is not used for generating images, used for documentation instead. Only tags/branches are. 
+**Note:** the `master` branch is not used for generating images, used for documentation instead. Only tags/branches are.
 
 ## docker-compose usage:
 

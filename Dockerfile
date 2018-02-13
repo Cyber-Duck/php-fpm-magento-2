@@ -17,6 +17,7 @@ RUN apt-get update && \
         libssl-dev \
         openssh-server \
         git \
+        cron \
         nano
 
 RUN docker-php-ext-install pdo_mysql
@@ -83,6 +84,27 @@ RUN curl -s http://getcomposer.org/installer | php && \
     mv composer.phar /usr/local/bin/composer
 # Source the bash
 RUN . ~/.bashrc
+
+#####################################
+# Magento2 Cron Jobs Setup:
+#####################################
+
+RUN echo "#~ MAGENTO START" >> /etc/cron.d/magento2-jobs
+RUN echo "* * * * * /usr/bin/php /var/www/bin/magento cron:run 2>&1 | grep -v Ran jobs by schedule >> /var/www/var/log/magento.cron.log" >> /etc/cron.d/magento2-jobs
+RUN echo "* * * * * /usr/bin/php /var/www/update/cron.php >> /var/www/var/log/update.cron.log" >> /etc/cron.d/magento2-jobs
+RUN echo "* * * * * /usr/bin/php /var/www/bin/magento setup:cron:run >> /var/www/var/log/setup.cron.log" >> /etc/cron.d/magento2-jobs
+RUN echo "#~ MAGENTO END" >> /etc/cron.d/magento2-jobs
+RUN chmod 0644 /etc/cron.d/magento2-jobs
+
+#####################################
+# Set ownership and permissions:
+#####################################
+
+RUN cd /var/www && \
+    find var generated vendor pub/static pub/media app/etc -type f -exec chmod g+w {} \; && \
+    find var generated vendor pub/static pub/media app/etc -type d -exec chmod g+ws {} \; && \
+    sudo chown -R :www-data . && \
+    chmod u+x bin/magento
 
 #
 #--------------------------------------------------------------------------
