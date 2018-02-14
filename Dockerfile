@@ -2,6 +2,8 @@ FROM php:7.1-fpm
 
 MAINTAINER clement@cyber-duck.co.uk
 
+ENV XDEBUG="false"
+
 RUN apt-get update && \
     apt-get install -y --force-yes --no-install-recommends \
         zlib1g-dev libicu-dev g++ \
@@ -121,6 +123,10 @@ RUN usermod -u 1000 www-data
 
 WORKDIR /var/www
 
-EXPOSE 9000
+COPY ./docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+RUN ln -s /usr/local/bin/docker-entrypoint.sh /
+ENTRYPOINT ["docker-entrypoint.sh"]
 
+EXPOSE 9000
 CMD ["php-fpm"]
