@@ -53,6 +53,8 @@ version: '2'
 services:
     php-fpm:
         image: cyberduck/php-fpm-magento2(:<version-tag>)
+        environment:
+            XDEBUG: "true" # optional: "false" by default
         volumes:
             - ./:/var/www/
             - ~/.ssh:/root/.ssh # can be useful for composer if you use private CVS
