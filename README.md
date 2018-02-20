@@ -28,13 +28,14 @@ Based on the **official Magento 2 requirements** [here](http://devdocs.magento.c
 * Iconv PHP Extension
 * PHP OPcache
 * Latest Composer
-* Cron (with Magento 2.2 Cron jobs setup, see [the official documentation](http://devdocs.magento.com/guides/v2.2/comp-mgr/prereq/prereq_cron.html))
 * PHP ini values for Magento 2 (see [`magento2.ini`](https://github.com/Cyber-Duck/php-fpm-laravel/blob/7.1/magento2.ini))
 * xDebug (PHPStorm friendly, see [`xdebug.ini`](https://github.com/Cyber-Duck/php-fpm-laravel/blob/7.1/xdebug.ini))
 * `magento` alias created to run unit tests `bin/magento` with `docker-compose exec [service_name] magento ...`
 * `t` alias created to run unit tests `vendor/bin/phpunit` with `docker-compose exec [service_name] t ...`
 
 More information: [`Dockerfile`](https://github.com/Cyber-Duck/php-fpm-laravel/blob/7.1/Dockerfile)
+
+⚠️ Magento 2 Cron jobs are not installed by default, see [the official documentation](http://devdocs.magento.com/guides/v2.2/comp-mgr/prereq/prereq_cron.html).
 
 ## Tags available:
 
@@ -61,3 +62,5 @@ services:
         networks:
             - my_net #if you're using networks between containers
 ```
+
+**Note:** If `XDEBUG` is set to `true`, you'll need to stop/start the service again.
