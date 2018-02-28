@@ -110,7 +110,7 @@ WORKDIR /var/www
 # Magento 2 permissions
 RUN find var vendor generated pub/static pub/media app/etc -type f -exec chmod g+w {} \; && \
     find var vendor generated pub/static pub/media app/etc -type d -exec chmod g+ws {} \; && \
-    chown -R :www-data . && chmod u+x bin/magento
+    chown -R root:www-data . && chmod u+x bin/magento
 
 COPY ./docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
