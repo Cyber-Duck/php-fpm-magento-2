@@ -100,6 +100,9 @@ RUN chmod +x /usr/bin/dep
 # docker-compose exec php-fpm magento --> php bin/magento
 RUN echo '#!/bin/bash\n/usr/local/bin/php /var/www/bin/magento "$@"' > /usr/bin/magento
 RUN chmod +x /usr/bin/magento
+# docker-compose exec php-fpm phpunit --> php vendor/bin/phpunit
+RUN echo '#!/bin/bash\n/usr/local/bin/php /var/www/vendor/bin/phpunit "$@"' > /usr/bin/phpunit
+RUN chmod +x /usr/bin/phpunit
 
 RUN rm -r /var/lib/apt/lists/*
 
