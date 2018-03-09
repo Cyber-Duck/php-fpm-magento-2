@@ -103,6 +103,9 @@ RUN chmod +x /usr/bin/magento
 # docker-compose exec php-fpm phpunit --> php vendor/bin/phpunit
 RUN echo '#!/bin/bash\n/usr/local/bin/php /var/www/vendor/bin/phpunit "$@"' > /usr/bin/phpunit
 RUN chmod +x /usr/bin/phpunit
+# docker-compose exec php-fpm magerun --> php vendor/bin/n98-magerun2
+RUN echo '#!/bin/bash\n/usr/local/bin/php /var/www/vendor/bin/n98-magerun2 "$@"' > /usr/bin/magerun
+RUN chmod +x /usr/bin/magerun
 
 RUN rm -r /var/lib/apt/lists/*
 
