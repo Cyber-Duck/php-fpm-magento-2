@@ -29,7 +29,6 @@ RUN docker-php-ext-install exif
 RUN docker-php-ext-install gettext
 RUN docker-php-ext-install mcrypt
 RUN docker-php-ext-install mysqli
-# RUN docker-php-ext-install pcntl
 RUN docker-php-ext-install pdo_mysql
 RUN docker-php-ext-install soap
 RUN docker-php-ext-install sockets
@@ -89,6 +88,7 @@ RUN . ~/.bashrc
 #
 
 ADD ./magento2.ini /usr/local/etc/php/conf.d
+COPY www.conf /usr/local/etc/php-fpm.d/
 
 #####################################
 # Aliases:
