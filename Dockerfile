@@ -87,8 +87,11 @@ RUN . ~/.bashrc
 #--------------------------------------------------------------------------
 #
 
+# Copy over and install php ini files
 ADD ./magento2.ini /usr/local/etc/php/conf.d
 COPY www.conf /usr/local/etc/php-fpm.d/
+# Start Cron service
+RUN service cron start
 
 #####################################
 # Aliases:
@@ -107,8 +110,10 @@ RUN chmod +x /usr/bin/phpunit
 RUN echo '#!/bin/bash\n/usr/local/bin/php /var/www/vendor/bin/n98-magerun2 "$@"' > /usr/bin/magerun
 RUN chmod +x /usr/bin/magerun
 
+# Cleanup after aptitude package manager
 RUN rm -r /var/lib/apt/lists/*
 
+# Web user
 RUN usermod -u 33 www-data
 
 WORKDIR /var/www
