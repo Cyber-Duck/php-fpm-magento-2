@@ -90,8 +90,6 @@ RUN . ~/.bashrc
 # Copy over and install php ini files
 ADD ./magento2.ini /usr/local/etc/php/conf.d
 COPY www.conf /usr/local/etc/php-fpm.d/
-# Start Cron service
-RUN service cron start
 
 #####################################
 # Aliases:
