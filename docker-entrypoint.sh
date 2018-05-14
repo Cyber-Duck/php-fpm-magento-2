@@ -1,5 +1,7 @@
 #!/bin/bash
 
+service cron start
+
 # Toggle xdebug
 if [ "false" == "$XDEBUG" ]; then
     sed -i "s/^/;/" /usr/local/etc/php/conf.d/xdebug.ini
