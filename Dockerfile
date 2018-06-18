@@ -19,6 +19,7 @@ RUN apt-get update && \
         libssl-dev \
         openssh-server \
         curl \
+        'nodejs=8.11.3*' \
         git \
         cron \
         nano
@@ -80,6 +81,12 @@ RUN curl -s http://getcomposer.org/installer | php && \
     echo "export PATH=${PATH}:/var/www/vendor/bin" >> ~/.bashrc && \
     mv composer.phar /usr/local/bin/composer
 RUN . ~/.bashrc
+
+#####################################
+# Grunt-cli:
+#####################################
+
+RUN npm i grunt-cli -g
 
 #
 #--------------------------------------------------------------------------
