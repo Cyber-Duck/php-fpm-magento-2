@@ -86,7 +86,7 @@ RUN . ~/.bashrc
 # nodejs 8 + npm + grunt-cli:
 #####################################
 
-RUN RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get install -y --force-yes --no-install-recommends install nodejs
 RUN npm i grunt-cli -g
 
