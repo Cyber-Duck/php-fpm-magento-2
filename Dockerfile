@@ -77,18 +77,18 @@ RUN pecl install memcached && docker-php-ext-enable memcached
 # Composer:
 #####################################
 
-RUN curl -s http://getcomposer.org/installer | php && \
-    echo "export PATH=${PATH}:/var/www/vendor/bin" >> ~/.bashrc && \
-    mv composer.phar /usr/local/bin/composer
+RUN curl -s http://getcomposer.org/installer | php
+RUN echo "export PATH=${PATH}:/var/www/vendor/bin" >> ~/.bashrc
+RUN mv composer.phar /usr/local/bin/composer
 RUN . ~/.bashrc
 
 #####################################
 # nodejs 8 + npm + grunt-cli:
 #####################################
 
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
-RUN apt-get install -y --force-yes --no-install-recommends install nodejs
-RUN npm i grunt-cli -g
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
+    apt-get install -y nodejs
+RUN npm install grunt-cli -g
 
 #
 #--------------------------------------------------------------------------
