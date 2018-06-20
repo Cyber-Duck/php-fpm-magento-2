@@ -4,8 +4,9 @@ MAINTAINER clement@cyber-duck.co.uk
 
 ENV XDEBUG="false"
 
-RUN apt-get update && \
-    apt-get install -y --force-yes --no-install-recommends \
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+RUN apt-get update
+RUN apt-get install -y --force-yes --no-install-recommends \
         zlib1g-dev libicu-dev g++ \
         libz-dev \
         libpq-dev \
@@ -19,7 +20,7 @@ RUN apt-get update && \
         libssl-dev \
         openssh-server \
         curl \
-        'nodejs=8.11.3*' \
+        nodejs \
         git \
         cron \
         nano
