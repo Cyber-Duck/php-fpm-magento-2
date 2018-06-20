@@ -10,7 +10,7 @@ RUN apt-get install -y --force-yes --no-install-recommends \
         libz-dev \
         libpq-dev \
         libjpeg-dev \
-        libpng12-dev \
+        libpng-dev \
         libfreetype6-dev \
         libmcrypt-dev \
         libxslt-dev \
