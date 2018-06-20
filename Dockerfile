@@ -4,7 +4,6 @@ MAINTAINER clement@cyber-duck.co.uk
 
 ENV XDEBUG="false"
 
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get update
 RUN apt-get install -y --force-yes --no-install-recommends \
         zlib1g-dev libicu-dev g++ \
@@ -19,8 +18,8 @@ RUN apt-get install -y --force-yes --no-install-recommends \
         libtidy-dev \
         libssl-dev \
         openssh-server \
+        gnupg2 \
         curl \
-        nodejs \
         git \
         cron \
         nano
@@ -84,9 +83,11 @@ RUN curl -s http://getcomposer.org/installer | php && \
 RUN . ~/.bashrc
 
 #####################################
-# Grunt-cli:
+# nodejs 8 + npm + grunt-cli:
 #####################################
 
+RUN RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+RUN apt-get install -y --force-yes --no-install-recommends install nodejs
 RUN npm i grunt-cli -g
 
 #
