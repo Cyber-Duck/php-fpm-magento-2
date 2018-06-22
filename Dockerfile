@@ -19,6 +19,7 @@ RUN apt-get install -y --force-yes --no-install-recommends \
         libssl-dev \
         openssh-server \
         gnupg2 \
+        wkhtmltopdf \
         curl \
         git \
         cron \
