@@ -25,6 +25,7 @@ Based on the **official Magento 2 requirements** [here](http://devdocs.magento.c
 * XSL PHP Extension
 * ZIP PHP Extension
 * JSON PHP Extension
+* WebKitHTMLtoPDF (wkhtmltopdf) Support
 * Iconv PHP Extension
 * PHP OPcache
 * Latest Composer
