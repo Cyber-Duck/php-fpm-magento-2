@@ -26,6 +26,7 @@ Based on the **official Magento 2 requirements** [here](http://devdocs.magento.c
 * ZIP PHP Extension
 * JSON PHP Extension
 * Iconv PHP Extension
+* WebKitHTMLtoPDF (wkhtmltopdf) Support
 * PHP OPcache
 * Latest Composer
 * NodeJS 8 + NPM (for standard Magento 2 Front-end Build System using Grunt)
